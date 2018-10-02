@@ -5,8 +5,6 @@ Boilerplate to create a local development environment using Vagrant + Ansible.
 * [Ansible](http://docs.ansible.com/ansible/index.html)
 * [Vagrant](https://www.vagrantup.com)
 
----
-
 ## Requirements
 * [Python >= 2.6](https://www.python.org)
 * [Ansible](http://docs.ansible.com/ansible/intro_installation.html#installation)
@@ -17,8 +15,6 @@ Boilerplate to create a local development environment using Vagrant + Ansible.
     - Mac: `brew cask install virtualbox`
 * [Vagrant](https://www.vagrantup.com/downloads.html) >= 2.0
     - system package managers often provide outdated versions of vagrant, so downloading from their site is recommended for best results
-
----
 
 ## Getting Started
 - Make sure you have all the requirements listed above.
@@ -32,6 +28,11 @@ This will give you a basic VM with a few useful packages installed.
 The root directory of this project will be mounted in the VM at `/vagrant`. I recommend using the `workspace` directory (`/vagrant/workspace` on the VM) to hold your projects.
 
 This boilerplate is meant to be extended to provide a development environment suitable for your project. See [Extending](#extending) below.
+
+### Other Vagrant Commands
+- To stop your VM: `vagrant halt`
+- To restart your VM: `vagrant reload`
+- To run ansible again (i.e., after making changes to the playbook): `vagrant provision`
 
 ## Basic Customization
 Configuration can be changed in `ansible/vars/all.yml`.
