@@ -23,7 +23,7 @@ Boilerplate to create a local development environment using Vagrant + Ansible.
 - run `vagrant up` to build your VM
 - run `vagrant ssh` to SSH into your running VM
 
-This will give you a basic VM with a few useful packages installed.
+This will give you a basic VM (Ubuntu 16.04 by default) with a few useful packages installed.
 
 The root directory of this project will be mounted in the VM at `/vagrant`. I recommend using the `workspace` directory (`/vagrant/workspace` on the VM) to hold your projects.
 
