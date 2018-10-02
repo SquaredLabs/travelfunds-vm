@@ -1,0 +1,33 @@
+---
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: true
+    update_cache: true
+
+- name: Install System Packages
+  become: yes
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items: "{{ server.packages }}"
+  when: server.packages is defined
+
+- name: Configure the timezone
+  become: true
+  template:
+    src: timezone.tpl
+    dest: /etc/timezone
+
+- name: More Configure the timezone
+  become: true
+  file:
+    src: "/usr/share/zoneinfo/{{server.timezone}}"
+    dest: /etc/localtime
+    state: link
+    force: true
+    backup: true
+
+- name: Set default system language pack
+  shell: locale-gen {{server.locale}}
+  become: true

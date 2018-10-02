@@ -1,0 +1,20 @@
+---
+server:
+    packages:
+      - curl
+      - wget
+      - python-software-properties
+      - ca-certificates
+      - build-essential
+      - libxml2-dev
+      - unzip
+      - git
+      - zsh
+    timezone: America/New_York
+    locale: en_US.UTF-8
+vagrant_local:
+    vm:
+      base_box: 'ubuntu/xenial64'
+      hostname: dev.project.vm
+      ip: 192.168.10.10
+      memory: 2048

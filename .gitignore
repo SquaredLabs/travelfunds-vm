@@ -1,0 +1,5 @@
+.vagrant
+*.retry
+.notes
+.galaxy-roles/
+*.log
