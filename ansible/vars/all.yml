@@ -3,7 +3,6 @@ server:
     packages:
       - curl
       - wget
-      - python-software-properties
       - ca-certificates
       - build-essential
       - libxml2-dev
@@ -14,7 +13,14 @@ server:
     locale: en_US.UTF-8
 vagrant_local:
     vm:
-      base_box: 'ubuntu/xenial64'
-      hostname: dev.project.vm
-      ip: 192.168.10.10
-      memory: 2048
+      base_box: 'ubuntu/bionic64'
+      hostname: travelfunds.core.vm
+      ip: 192.168.80.13
+      memory: 4096
+
+
+postgresql_databases:
+  - name: travelfunds
+
+postgresql_users:
+  - name: vagrant

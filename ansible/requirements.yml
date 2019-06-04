@@ -1,3 +1,4 @@
 ---
-# add ansible-galaxy requirements here - example:
-# - geerlingguy.mysql
+# add ansible-galaxy requirements here
+- geerlingguy.postgresql
+- geerlingguy.nodejs

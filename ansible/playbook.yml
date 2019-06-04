@@ -13,3 +13,5 @@
   roles:
     - { role: server, tags: ['server'] }
     - { role: vagrant_local, tags: ['vagrant_local'] }
+    - { role: geerlingguy.nodejs, tags: ['nodejs'] }
+    - { role: geerlingguy.postgresql, tags: ['postgresql'] }
