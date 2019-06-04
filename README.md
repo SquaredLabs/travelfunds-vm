@@ -1,9 +1,6 @@
 # Boilerplate VM development environment setup
 
-Boilerplate to create a local development environment using Vagrant + Ansible.
-
-* [Ansible](http://docs.ansible.com/ansible/index.html)
-* [Vagrant](https://www.vagrantup.com)
+Creates a local development VM for travelfunds.core.uconn.edu
 
 ## Requirements
 * [Python >= 2.6](https://www.python.org)
@@ -23,45 +20,42 @@ Boilerplate to create a local development environment using Vagrant + Ansible.
 - run `vagrant up` to build your VM
 - run `vagrant ssh` to SSH into your running VM
 
-This will give you a basic VM (Ubuntu 16.04 by default) with a few useful packages installed.
-
 The root directory of this project will be mounted in the VM at `/vagrant`. I recommend using the `workspace` directory (`/vagrant/workspace` on the VM) to hold your projects.
-
-This boilerplate is meant to be extended to provide a development environment suitable for your project. See [Extending](#extending) below.
 
 ### Other Vagrant Commands
 - To stop your VM: `vagrant halt`
 - To restart your VM: `vagrant reload`
 - To run ansible again (i.e., after making changes to the playbook): `vagrant provision`
 
-## Basic Customization
-Configuration can be changed in `ansible/vars/all.yml`.
+### Setting up the project
 
-Base server packages, timezone, and language are set in the `server` key:
-```yaml
-server:
-    packages:
-      - curl
-      - wget
-      - python-software-properties
-      - ca-certificates
-      - build-essential
-      - libxml2-dev
-      - unzip
-      - git
-      - zsh
-    timezone: America/New_York
-    locale: en_US.UTF-8
+* SSH into your VM: `vagrant ssh`
+* Move to the shared workspace directory: `cd /vagrant/workspace`
+* Clone the project: `git clone git@github.com:SquaredLabs/travelfunds.core.uconn.edu.git travelfunds`
+* Move into your project directory: `cd travelfunds`
+* From there, follow installation instructions in the [travelfunds readme](https://github.com/SquaredLabs/travelfunds.core.uconn.edu/blob/develop/README.md)
+
+Since the `workspace` directory is shared with the VM, you can edit the files within `workspace` on your host machine and the changes will automatically be reflected in the VM. There is no need to rebuild or restart the VM after making changes to your application code.
+
+### Note on webpack-dev-server
+
+If you are using a local dev server (such as webpack-dev-server) you need to specify the host as `0.0.0.0` (due to Vagrant's networking setup, `localhost` will not work). For example:
+
+```
+webpack-dev-server --host 0.0.0.0 --mode=development
 ```
 
-VM settings (base box, hostname, IP, memory) are set in the `vagrant_local` key:
+## Customization
+Configuration can be changed in `ansible/vars/all.yml`.
+
+VM settings (hostname, IP, memory) are set in the `vagrant_local` key:
 ```yaml
 vagrant_local:
     vm:
-      base_box: 'ubuntu/xenial64'
-      hostname: dev.project.vm
-      ip: 192.168.10.10
-      memory: 2048
+      base_box: 'ubuntu/bionic64'
+      hostname: travelfunds.core.vm
+      ip: 192.168.80.13
+      memory: 4096
 ```
 
 ## Extending
