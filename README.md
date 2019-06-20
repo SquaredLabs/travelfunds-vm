@@ -17,6 +17,7 @@ Creates a local development VM for travelfunds.core.uconn.edu
 - Make sure you have all the requirements listed above.
 - Clone this repository
 - `cd` to the root directory of this repository
+- run `ansible-galaxy install -r ansible/requirements.yml`
 - run `vagrant up` to build your VM
 - run `vagrant ssh` to SSH into your running VM
 
@@ -44,6 +45,17 @@ If you are using a local dev server (such as webpack-dev-server) you need to spe
 ```
 webpack-dev-server --host 0.0.0.0 --mode=development
 ```
+
+### Mailhog
+
+This VM include an installation of [mailhog](https://github.com/mailhog/MailHog) for capturing emails sent by the application during development. You can access the mailhog HTTP server at http://travelfunds.core.vm:8025 to view the emails.
+
+Note that you should have the following as your SMTP configuration in `.env.local`:
+```
+SMTP_HOST=localhost
+SMTP_PORT=1025
+```
+The other `SMTP_*` variables can be left at their defaults.
 
 ## Customization
 Configuration can be changed in `ansible/vars/all.yml`.

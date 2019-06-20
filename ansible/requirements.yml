@@ -2,3 +2,4 @@
 # add ansible-galaxy requirements here
 - geerlingguy.postgresql
 - geerlingguy.nodejs
+- geerlingguy.mailhog
