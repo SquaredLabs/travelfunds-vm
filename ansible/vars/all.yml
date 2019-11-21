@@ -16,11 +16,17 @@ vagrant_local:
       base_box: 'ubuntu/bionic64'
       hostname: travelfunds.core.vm
       ip: 192.168.80.13
-      memory: 4096
+      memory: 8192
 
+# this is "C.UTF-8" for compatiblity with the existing production DB.
+# It may need to be changed to "en_US.UTF-8" in the future if this setting causes problems
+pg_lc_collate: C.UTF-8
 
 postgresql_databases:
   - name: travelfunds
+    lc_collate: "{{ pg_lc_collate }}"
+  - name: travelfunds-test
+    lc_collate: "{{ pg_lc_collate }}"
 
 postgresql_users:
   - name: vagrant
