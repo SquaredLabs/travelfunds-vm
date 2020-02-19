@@ -32,8 +32,12 @@ Vagrant.configure("2") do |config|
         ]
     end
 
-    # Provision the VM with ansible
-    config.vm.provision "ansible" do |ansible|
-        ansible.playbook = "ansible/playbook.yml"
+    # Provision the VM with ansible. Using the ansible_local provisioner means we don't
+    # need to install ansible on the host OS which is quite convenient.
+    config.vm.provision "ansible_local" do |ansible|
+        ansible.playbook = "/vagrant/ansible/playbook.yml"
+        ansible.provisioning_path  = "/vagrant/ansible"
+        ansible.galaxy_role_file = "/vagrant/ansible/requirements.yml"
+        ansible.galaxy_roles_path = "/home/vagrant/ansible/roles"
     end
 end
