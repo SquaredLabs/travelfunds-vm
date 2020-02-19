@@ -1,12 +1,7 @@
 # Boilerplate VM development environment setup
-
 Creates a local development VM for travelfunds.core.uconn.edu
 
 ## Requirements
-* [Python >= 2.6](https://www.python.org)
-* [Ansible](http://docs.ansible.com/ansible/intro_installation.html#installation)
-    - [Ubuntu Instructions](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-via-apt-ubuntu)
-    - [Mac Instructions](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-on-mac-osx)
 * [virtualbox](https://www.virtualbox.org/wiki/Downloads)
     - Ubuntu: `sudo apt install virtualbox`
     - Mac: `brew cask install virtualbox`
